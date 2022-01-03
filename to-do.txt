@@ -1,3 +1,0 @@
--pronoun support
--region support
--readme for installing and using
