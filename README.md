@@ -24,3 +24,7 @@ Thanks to BGCallisto for the video tutorials on making stream overlays. I used t
 Thanks to farpnut for StreamControl.
 
 Thanks to MiggL for the layout.xml that I copied to make the top 8 page.
+
+# To-do
+- pronoun support
+- region support
