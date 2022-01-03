@@ -32,30 +32,6 @@
   <comboItem value="MBTL">Melty Blood Type Lumina</comboItem>
 </comboBox>
  </tab>
- <tab name="Intermediate cam">
-  <label x="10" y="9" width="46" height="13">Bracket</label><lineEdit id="Bracket" x="60" y="5" width="310" height="20" />
-  <label x="10" y="37" width="46" height="13">Schedule</label><lineEdit id="Schedule" x="60" y="30" width="310" height="20" />
-  <label x="10" y="65" width="46" height="13">Int0</label>
-  <label x="10" y="93" width="46" height="13">Int1</label>
-  <label x="10" y="121" width="46" height="13">Int2</label>
-  <label x="10" y="149" width="46" height="13">Int3</label>
-  <lineEdit id="int0" x="60" y="55" width="310" height="20" />
-  <lineEdit id="int1" x="60" y="80" width="310" height="20" />
-  <lineEdit id="int2" x="60" y="105" width="310" height="20" />
-  <lineEdit id="int3" x="60" y="130" width="310" height="20" />
-  <label x="10" y= "177" width="46" height="13">Timer</label>
-  <comboBox id="timerLength" x="60" y="155" width="80" height="20" editable="1">
-	<comboItem>1:00</comboItem>
-	<comboItem selected="1">3:00</comboItem>
-	<comboItem>5:00</comboItem>
-	<comboItem>10:00</comboItem>
-	<comboItem>15:00</comboItem>
-	<comboItem>20:00</comboItem>
-  </comboBox>
-  <checkBox id="showTimer" x="150" y="155" width="80" height="20">Show timer</checkBox>
-  <button type="timestamp" id="timerStart" x="240" y="155" width="80" height="20">Start timer</button>
-  <label x="10" y="205" width="46" height="13">BRB text</label><lineEdit id="dTimeText" x="60" y="180" width="310" height="20" />
- </tab>
  <tab name="Top 8 Bracket">
      <label x="23" y="1" width="90" height="10">Winners Semis</label>
      <lineEdit id="ws1p1" x="10" y="13" width="80" height="20" /><lineEdit id="ws1p1s" x="90" y="13" width="20" height="20" />
@@ -94,5 +70,29 @@
      <label x="420" y="1" width="60" height="10">Set 2</label>
      <lineEdit id="gf2p1" x="400" y="55" width="50" height="20" /><lineEdit id="gf2p1s" x="450" y="55" width="20" height="20" />
      <lineEdit id="gf2p2" x="400" y="76" width="50" height="20" /><lineEdit id="gf2p2s" x="450" y="76" width="20" height="20" />
+ </tab>
+  <tab name="Intermediate">
+  <label x="10" y="9" width="46" height="13">Bracket</label><lineEdit id="Bracket" x="60" y="5" width="310" height="20" />
+  <label x="10" y="37" width="46" height="13">Schedule</label><lineEdit id="Schedule" x="60" y="30" width="310" height="20" />
+  <label x="10" y="65" width="46" height="13">Int0</label>
+  <label x="10" y="93" width="46" height="13">Int1</label>
+  <label x="10" y="121" width="46" height="13">Int2</label>
+  <label x="10" y="149" width="46" height="13">Int3</label>
+  <lineEdit id="int0" x="60" y="55" width="310" height="20" />
+  <lineEdit id="int1" x="60" y="80" width="310" height="20" />
+  <lineEdit id="int2" x="60" y="105" width="310" height="20" />
+  <lineEdit id="int3" x="60" y="130" width="310" height="20" />
+  <label x="10" y= "177" width="46" height="13">Timer</label>
+  <comboBox id="timerLength" x="60" y="155" width="80" height="20" editable="1">
+	<comboItem>1:00</comboItem>
+	<comboItem selected="1">3:00</comboItem>
+	<comboItem>5:00</comboItem>
+	<comboItem>10:00</comboItem>
+	<comboItem>15:00</comboItem>
+	<comboItem>20:00</comboItem>
+  </comboBox>
+  <checkBox id="showTimer" x="150" y="155" width="80" height="20">Show timer</checkBox>
+  <button type="timestamp" id="timerStart" x="240" y="155" width="80" height="20">Start timer</button>
+  <label x="10" y="205" width="46" height="13">BRB text</label><lineEdit id="dTimeText" x="60" y="180" width="310" height="20" />
  </tab>
 </layout>
