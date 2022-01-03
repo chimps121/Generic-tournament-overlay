@@ -18,3 +18,9 @@ The timer is awkward. You must click a time, make sure the timer is set to show,
 REMEMBER TO CLICK SAVE ONCE YOU HAVE MADE CHANGES TO SAVE THE CHANGES TO SHOW THEM ON THE PAGE.
 
 In Int Cam, you can edit the ticker text that plays down the bottom, as well as the text on the int pages. Edit the text then save using the save button and it should work. Easy clap.
+#Acknowledgements
+Thanks to BGCallisto for the video tutorials on making stream overlays. I used those to make this.
+
+Thanks to farpnut for StreamControl.
+
+Thanks to MiggL for the layout.xml that I copied to make the top 8 page.
