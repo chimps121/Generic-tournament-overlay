@@ -39,6 +39,7 @@ function init(){
 		
 		
 		if(startup == true){
+			//I do want to implement game specific overlay support at some point
 			/*game = scObj['game'];
 			
 			if(game == 'BBTAG' || game == 'SFVAE' || game == 'TEKKEN7' || game == 'UNIST'){
@@ -61,7 +62,7 @@ function init(){
 			$('#gameHold').html(game);
 			}*/
 			//``$('#scoreboardVid').attr('src','../webm/scoreboard_1.webm');
-			document.getElementById('scoreboardVid').play();
+			document.getElementById('scoreboardVid').play(); //what will happen if I try to remove this line???
 			getData();
 			startup = false;
 			animated = true;
