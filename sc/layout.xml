@@ -1,0 +1,98 @@
+<!DOCTYPE StreamControlLayout>
+<layout width="500" height="300" tabbed="1">
+ <tab name="Game cam" tabbed="1">
+  <label x="10" y="14" width="46" height="13">Player 1</label>
+  <label x="10" y="44" width="46" height="13">Player 2</label>
+  <label x="10" y="74" width="46" height="13">Round</label>
+  <label x="10" y="104" width="46" height="13">Comm1</label>
+  <label x="165" y="104" width="46" height="13">Comm2</label>
+  <lineEdit id="p1Name" x="60" y="10" width="171" height="20" dataSet="players.csv" dataField="1"/>
+  <lineEdit id="p1Team" x="240" y="10" width="60" height="20" dataSet="players.csv" dataField="2" master="p1Name"/>
+  <spinBox id="p1Score" x="310" y="9" width="42" height="25" maximum="999" />
+  <lineEdit id="p2Name" x="60" y="40" width="171" height="20" dataSet="players.csv" dataField="1"/>
+  <lineEdit id="p2Team" x="240" y="40" width="60" height="20" dataSet="players.csv" dataField="2" master="p2Name"/>
+  <spinBox id="p2Score" x="310" y="39" width="42" height="25" maximum="999" />
+  <checkBox id="p1Loser" x="360" y="14" width="15" height="15"></checkBox>
+  <checkBox id="p2Loser" x="360" y="44" width="15" height="15"></checkBox>
+  <lineEdit id="round" x="60" y="70" width="105" height="20" dataSet="round.csv"/>
+  <button type="reset" x="245" y="70" width="60" height="23" tooltip="Reset the Scores" id="reset1" reset="p1Score,p2Score">Reset</button>
+  <button type="swap" x="175" y="70" width="60" height="23" tooltip="Swap the Scores" id="swap1" swapSet1="p1Name,p1Team,p1Score,p1Region" swapSet2="p2Name,p2Team,p2Score,p2Region">Swap</button>
+  <button type="reset" x="315" y="70" width="60" height="23" tooltip="Clear all" id="reset2" reset="p1Name,p1Team,p1Score,p2Name,p2Team,p2Score,p1Region,p2Region">Clear</button>
+  <lineEdit id="comm1" x="60" y="100" width="95" height="20" dataSet="players.csv" dataField="1"/>
+  <lineEdit id="comm2" x="210" y="100" width="95" height="20" dataSet="players.csv" dataField="1"/> 
+  <button type="swap" x="315" y="100" width="60" height="23" tooltip="Swap commentators" id="swap2" swapSet1="comm1" swapSet2="comm2">Swap</button>
+  <label x="10" y="134" width="46" height="13">Game</label>
+  <comboBox id="game" width="170" height="20" x="60" y="130" editable="1" >
+  <comboItem selected="true" value="SSBU">Super Smash Bros Ultimate</comboItem>
+  <comboItem value="NASB">Nickelodeon All-Star Brawl</comboItem>
+  <comboItem value="RoA">Rivals of Aether</comboItem>
+  <comboItem value="SFV">Street Fighter V</comboItem>
+  <comboItem value="T7">Tekken 7</comboItem>
+  <comboItem value="GGS">Guilty Gear -Strive-</comboItem>
+  <comboItem value="MBTL">Melty Blood Type Lumina</comboItem>
+</comboBox>
+ </tab>
+ <tab name="Intermediate cam">
+  <label x="10" y="9" width="46" height="13">Bracket</label><lineEdit id="Bracket" x="60" y="5" width="310" height="20" />
+  <label x="10" y="37" width="46" height="13">Schedule</label><lineEdit id="Schedule" x="60" y="30" width="310" height="20" />
+  <label x="10" y="65" width="46" height="13">Int0</label>
+  <label x="10" y="93" width="46" height="13">Int1</label>
+  <label x="10" y="121" width="46" height="13">Int2</label>
+  <label x="10" y="149" width="46" height="13">Int3</label>
+  <lineEdit id="int0" x="60" y="55" width="310" height="20" />
+  <lineEdit id="int1" x="60" y="80" width="310" height="20" />
+  <lineEdit id="int2" x="60" y="105" width="310" height="20" />
+  <lineEdit id="int3" x="60" y="130" width="310" height="20" />
+  <label x="10" y= "177" width="46" height="13">Timer</label>
+  <comboBox id="timerLength" x="60" y="155" width="80" height="20" editable="1">
+	<comboItem>1:00</comboItem>
+	<comboItem selected="1">3:00</comboItem>
+	<comboItem>5:00</comboItem>
+	<comboItem>10:00</comboItem>
+	<comboItem>15:00</comboItem>
+	<comboItem>20:00</comboItem>
+  </comboBox>
+  <checkBox id="showTimer" x="150" y="155" width="80" height="20">Show timer</checkBox>
+  <button type="timestamp" id="timerStart" x="240" y="155" width="80" height="20">Start timer</button>
+  <label x="10" y="205" width="46" height="13">BRB text</label><lineEdit id="dTimeText" x="60" y="180" width="310" height="20" />
+ </tab>
+ <tab name="Top 8 Bracket">
+     <label x="23" y="1" width="90" height="10">Winners Semis</label>
+     <lineEdit id="ws1p1" x="10" y="13" width="80" height="20" /><lineEdit id="ws1p1s" x="90" y="13" width="20" height="20" />
+     <lineEdit id="ws1p2" x="10" y="35" width="80" height="20" /><lineEdit id="ws1p2s" x="90" y="35" width="20" height="20" />
+     <lineEdit id="ws2p1" x="10" y="65" width="80" height="20" /><lineEdit id="ws2p1s" x="90" y="65" width="20" height="20" />
+     <lineEdit id="ws2p2" x="10" y="87" width="80" height="20" /><lineEdit id="ws2p2s" x="90" y="87" width="20" height="20" />
+     
+     <label x="6" y="166" width="90" height="16">Losers Top 8</label>
+     <lineEdit id="ltop81p1" x="2" y="193" width="50" height="20" /><lineEdit id="ltop81p1s" x="52" y="193" width="20" height="20" />
+     <lineEdit id="ltop81p2" x="2" y="215" width="50" height="20" /><lineEdit id="ltop81p2s" x="52" y="215" width="20" height="20" />
+     <lineEdit id="ltop82p1" x="2" y="260" width="50" height="20" /><lineEdit id="ltop82p1s" x="52" y="260" width="20" height="20" />
+     <lineEdit id="ltop82p2" x="2" y="282" width="50" height="20" /><lineEdit id="ltop82p2s" x="52" y="282" width="20" height="20" />
+     
+     <label x="98" y="166" width="100" height="16">Losers Quarters</label>
+     <lineEdit id="lq1p1" x="102" y="183" width="50" height="20">Loser of B</lineEdit><lineEdit id="lq1p1s" x="152" y="183" width="20" height="20" />
+     <lineEdit id="lq1p2" x="102" y="205" width="50" height="20" /><lineEdit id="lq1p2s" x="152" y="205" width="20" height="20" />
+     <lineEdit id="lq2p1" x="102" y="250" width="50" height="20">Loser of A</lineEdit><lineEdit id="lq2p1s" x="152" y="250" width="20" height="20" />
+     <lineEdit id="lq2p2" x="102" y="272" width="50" height="20" /><lineEdit id="lq2p2s" x="152" y="272" width="20" height="20" />
+     
+     <label x="206" y="166" width="100" height="16">Losers Semis</label>
+     <lineEdit id="lsp1" x="202" y="214" width="50" height="20" /><lineEdit id="lsp1s" x="252" y="214" width="20" height="20" />
+     <lineEdit id="lsp2" x="202" y="237" width="50" height="20" /><lineEdit id="lsp2s" x="252" y="237" width="20" height="20" />
+     
+     <label x="302" y="166" width="100" height="16">Losers Finals</label>
+     <lineEdit id="lfp1" x="302" y="204" width="50" height="20">Loser of Winners Finals</lineEdit><lineEdit id="lfp1s" x="352" y="204" width="20" height="20" />
+     <lineEdit id="lfp2" x="302" y="227" width="50" height="20" /><lineEdit id="lfp2s" x="352" y="227" width="20" height="20" />
+     
+     <label x="154" y="1" width="90" height="10">Winners Finals</label>
+     <lineEdit id="wfp1" x="140" y="45" width="80" height="20" /><lineEdit id="wfp1s" x="220" y="45" width="20" height="20" />
+     <lineEdit id="wfp2" x="140" y="66" width="80" height="20" /><lineEdit id="wfp2s" x="220" y="66" width="20" height="20" />
+     
+     <label x="284" y="1" width="90" height="10">Grand Finals</label>
+     <lineEdit id="gfp1" x="270" y="55" width="80" height="20" /><lineEdit id="gfp1s" x="350" y="55" width="20" height="20" />
+     <lineEdit id="gfp2" x="270" y="76" width="80" height="20">Winner of Losers Finals</lineEdit><lineEdit id="gfp2s" x="350" y="76" width="20" height="20" />
+     
+     <label x="420" y="1" width="60" height="10">Set 2</label>
+     <lineEdit id="gf2p1" x="400" y="55" width="50" height="20" /><lineEdit id="gf2p1s" x="450" y="55" width="20" height="20" />
+     <lineEdit id="gf2p2" x="400" y="76" width="50" height="20" /><lineEdit id="gf2p2s" x="450" y="76" width="20" height="20" />
+ </tab>
+</layout>

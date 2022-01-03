@@ -1,0 +1,150 @@
+<html>
+
+<head>
+
+    <script src="../js/engine.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/greensock-js/src/minified/TweenMax.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <style text="text/CSS">
+        @font-face {
+            src: url('..fonts/BAHNSCHRIFT.ttf');
+            font-stretch: semi-condensed;
+            font-weight: bold;
+            font-family: "Bahnschrift";
+        }
+
+        body {
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background: transparent;
+            padding: 0px;
+            margin: 0px;
+            color: white;
+            text-shadow: 2px 2px 3px black;
+            font-family: "Bahnschrift";
+        }
+
+        .scoreboard {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+
+        .elements {
+            position: absolute;
+            width: 905px;
+            height: 187px;
+            line-height: 32px;
+            text-align: left;
+            top: 845px;
+            left: 125px;
+            font-size: 20px;
+            opacity: 0;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <div id="scoreboardBG">
+        <img src="../imgs/Updates-Splash.png" class="scoreboard"></img>
+        <video id="scoreboardVid" class="scoreboard" type="video/webm" width="1920" height="114"></video>
+
+    </div>
+
+    <div id="scoreboard">
+        <div id="elements">
+            <span id="intText" class="elements"></span>
+            <!--this will contain the combined text-->
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        var elementsDelay = .1;
+        var nameSize = "23px";
+        var rdSize = "20px";
+        var p1Move = "+30px";
+        var p2Move = "-30px";
+        var rdMove = "-20px";
+        var nameTime = .3;
+        var nameDelay = .2;
+        var rdTime = .3;
+        var rdDelay = .2;
+        var scTime = .3;
+        var scDelay = .45;
+        var logoTime = 200; //amount of time the fade-in animation for logos is delayed before starting
+
+        var streamJSON = "../sc/streamcontrol.json";
+        var xhttp = new XMLHttpRequest();
+        var fresh = true;
+        var scValues;
+        var timerTarget;
+
+        xhttp.overrideMimeType('application/json');
+        xhttp.onreadystatechange = parseJSON;
+
+        scUpdate();
+        setInterval(function () { scUpdate() }, 1000);
+
+        function scUpdate() {
+            xhttp.open('GET', streamJSON, true);
+            xhttp.send();
+        }
+
+        function parseJSON() {
+            if (xhttp.readyState === 4) {
+                scValues = JSON.parse(xhttp.responseText);
+                downtime();
+            }
+        }
+
+        function downtime() {
+            getText();
+        }
+
+
+        function getText() {
+            var intTextValues = scValues["Bracket"] + "<br />" + scValues["Schedule"] + "<br />" + scValues["int0"] + "<br />" + scValues["int1"] + "<br />" + scValues["int2"] + "<br />" + scValues["int3"];
+            var intTextValuesForChecking = scValues["Bracket"] + scValues["Schedule"] + scValues["int0"] + scValues["int1"] + scValues["int2"] + scValues["int3"];
+            if (fresh == true) {
+                $("#intText").html(intTextValues);
+                TweenMax.to("#intText", nameTime, {
+                    css: { x: "+0px", opacity: 1 },
+                    ease: Quad.easeOut,
+                    delay: nameDelay,
+                });
+                fresh = false;
+            }
+            else {
+                //check intText change
+                if ($("#intText").text() != intTextValuesForChecking) {
+                    TweenMax.to("#intText", nameTime, {
+                        css: { x: "+0px", opacity: 0 },
+                        ease: Quad.easeOut,
+                        delay: 0,
+                        onComplete: function () {
+                            $("#intText").html(intTextValues);
+                            TweenMax.to("#intText", nameTime, {
+                                css: { x: "+0px", opacity: 1 },
+                                ease: Quad.easeOut,
+                                delay: nameDelay,
+                            });
+                        }
+                    });
+                }
+            }
+        }
+    </script>
+
+</body>
+
+
+
+
+</html>

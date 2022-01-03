@@ -1,0 +1,201 @@
+<html>
+
+<head>
+	<script src="../js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/greensock-js/src/minified/TweenMax.min.js" type="text/javascript" charset="utf-8"></script>
+
+	<style text="text/CSS">
+		@font-face {
+			src: url('..fonts/BAHNSCHRIFT.ttf');
+			font-stretch: semi-condensed;
+			font-weight: bold;
+			font-family: "Bahnschrift";
+		}
+
+		body {
+			width: 1920px;
+			height: 1080px;
+			overflow: hidden;
+			background: transparent;
+			padding: 0px;
+			margin: 0px;
+			color: white;
+			font-family: "Bahnschrift";
+		}
+
+		.scoreboard {
+			position: absolute;
+			left: 0px;
+			top: 0px;
+		}
+
+		#checklist {
+			width: 390px;
+			height: 190px;
+			position: absolute;
+			left: 885px;
+			top: 443px;
+			font-size: 30px;
+			display: none;
+		}
+
+		#time {
+			width: 1920px;
+			height: 250px;
+			position: absolute;
+			left: 0px;
+			top: 780px;
+			font-size: 125px;
+			text-align: center;
+			opacity: 0;
+			-webkit-text-stroke: 3px black;
+		}
+
+		#text {
+			width: 1280px;
+			height: 250px;
+			position: absolute;
+			left: 0px;
+			top: 200px;
+			font-size: 100px;
+			display: block;
+			text-align: center;
+			opacity: 0;
+			display: none;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<div id="scoreboardBG">
+		<img src="../imgs/Timer.png" class="scoreboard"></img>
+	</div>
+
+	<div id="checklist" class="textarea"></div>
+
+	<div id="time">timer</div>
+	<div id="text">test</div>
+
+	<script>
+		var elementsDelay = .1;
+		var nameSize = "23px";
+		var rdSize = "20px";
+		var p1Move = "+30px";
+		var p2Move = "-30px";
+		var rdMove = "-20px";
+		var nameTime = .3;
+		var nameDelay = .2;
+		var rdTime = .3;
+		var rdDelay = .2;
+		var scTime = .3;
+		var scDelay = .45;
+		var logoTime = 200; //amount of time the fade-in animation for logos is delayed before starting
+
+		var streamJSON = "../sc/streamcontrol.json";
+		var xhttp = new XMLHttpRequest();
+		var fresh = true;
+		var scValues;
+		var timerTarget;
+
+		xhttp.overrideMimeType('application/json');
+		xhttp.onreadystatechange = parseJSON;
+
+		scUpdate();
+		setInterval(function () { scUpdate() }, 1000);
+
+		function scUpdate() {
+			xhttp.open('GET', streamJSON, true);
+			xhttp.send();
+		}
+
+		function parseJSON() {
+			if (xhttp.readyState === 4) {
+				scValues = JSON.parse(xhttp.responseText);
+				downtime();
+			}
+		}
+
+		function downtime() {
+			getText();
+			timerCheck();
+			getTarget();
+			getTimer();
+		}
+
+		function getTarget() {
+			timerLength = scValues["timerLength"];
+			timerStart = scValues["timerStart"];
+			var timeArray = timerLength.split(":");
+			timerTarget = new Date((timerStart * 1000) + (timeArray[0] * 1000 * 60) + (timeArray[1] * 1000) + 1500);
+		}
+
+		function getTimer() {
+			var current = new Date();
+			var remainder = timerTarget - current;
+			if (remainder <= 0) {
+				$("#time").html("Now!");
+			}
+			else { $("#time").html(getCountdown(remainder)); }
+		}
+
+		function getCountdown(x) {
+			var minutes = Math.floor(x / (60 * 1000) % 60);
+			var seconds = "0" + Math.floor(x / 1000 % 60);
+			var countdown = minutes + ":" + seconds.slice(-2);
+			return countdown;
+		}
+
+		function getText() {
+			if (fresh == true) {
+				$("#text").html(scValues["dTimeText"]);
+				TweenMax.to("#text", nameTime, {
+					css: { x: "+0px", opacity: 1 },
+					ease: Quad.easeOut,
+					delay: nameDelay,
+				});
+				fresh = false;
+			}
+			else {
+				//check text change
+				if ($("#text").text() != scValues["dTimeText"]) {
+					TweenMax.to("#text", nameTime, {
+						css: { x: "+0px", opacity: 0 },
+						ease: Quad.easeOut,
+						delay: 0,
+						onComplete: function () {
+							$("#text").html(scValues["dTimeText"]);
+							TweenMax.to("#text", nameTime, {
+								css: { x: "+0px", opacity: 1 },
+								ease: Quad.easeOut,
+								delay: nameDelay,
+							});
+						}
+					});
+				}
+			}
+		}
+
+		function timerCheck() {
+			var showTimer = scValues["showTimer"];
+			if (showTimer == 1) {
+				TweenMax.to("#time", 1, {
+					css: { x: "+0px", opacity: 1 },
+					ease: Quad.easeOut,
+					delay: nameDelay,
+				});
+			}
+			else if (showTimer == 0) {
+				TweenMax.to("#time", 1, {
+					css: { x: "+0px", opacity: 0 },
+					ease: Quad.easeOut,
+					delay: nameDelay,
+				});
+			}
+		}
+	</script>
+
+</body>
+
+</html>

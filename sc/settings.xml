@@ -1,0 +1,13 @@
+<!DOCTYPE StreamControl>
+<settings>
+ <altHotkeyHandling>0</altHotkeyHandling>
+ <challonge>
+  <apiKey>bxayJVyIXAjGSdFjx6Xqeid3mjqDxpk2mZtG0XLi</apiKey>
+  <organization></organization>
+  <username>SkullgirlsOceania</username>
+ </challonge>
+ <format>2</format>
+ <layoutPath>newlayouttest.xml</layoutPath>
+ <outputPath></outputPath>
+ <useCDATA>0</useCDATA>
+</settings>
