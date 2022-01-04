@@ -28,3 +28,5 @@ Thanks to MiggL for the layout.xml that I copied to make the top 8 page.
 - pronoun support
 - region support
 - game specific overlay support from streamcontrol and the js
+# Known issues
+- StreamControl looks different on my laptop and on my PC, so it will probably look different on computers with different default font settings.
