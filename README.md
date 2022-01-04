@@ -25,8 +25,7 @@ Thanks to farpnut for StreamControl.
 
 Thanks to MiggL for the layout.xml that I copied to make the top 8 page.
 # To-do
-- pronoun support
-- region support
+- pronoun support (should pronouns text on tournament be a dynamic size or the same size as the name? Or should it be in a different box entirely?)
 - game specific overlay support from streamcontrol and the js
 # Known issues
 - StreamControl looks different on my laptop and on my PC, so it will probably look different on computers with different default font settings.
