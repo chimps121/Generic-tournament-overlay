@@ -63,7 +63,9 @@ function init(){
 			}*/
 			//``$('#scoreboardVid').attr('src','../webm/scoreboard_1.webm');
 			document.getElementById('scoreboardVid').play(); //what will happen if I try to remove this line???
-			getData();
+			var game = scObj['game'];
+			$('#gameHold').html(game);
+			getData(); //getData happens every time scoreboard is called, which is every 300ms
 			startup = false;
 			animated = true;
 			setTimeout(ticker,200);
@@ -75,7 +77,7 @@ function init(){
 		}
 		
 	}
-	setTimeout(scoreboard,300);
+	setTimeout(scoreboard,300); //every 300ms the scoreboard function is called
 	
 	function logoLoop() {
 		var initialTime = 700; //initial fade-in time for first logo
@@ -148,6 +150,7 @@ function init(){
 	}
 	
 	function getData(){
+		// p1Loser is automatic L hold-outer, it checks if that box is true and adds the L
 		if (scObj['p1Loser'] == 1) {
 			p1Name = scObj['p1Name'] + ' (L)';}
 		else {
@@ -156,6 +159,7 @@ function init(){
 			p2Name = scObj['p2Name'] + ' (L)';}
 		else {
 			p2Name = scObj['p2Name'];}
+		// check if the team variable is empty, if not it adds the | character everyone loves or whatever
 		if (scObj['p1Team'] == '') {
 			var p1Team = scObj['p1Team'];}
 		else {
@@ -166,16 +170,16 @@ function init(){
 			var p2Team = scObj['p2Team'] + ' | ';}
 		var p1Score = scObj['p1Score'];
 		var p2Score = scObj['p2Score'];
-		/*var p1Region = scObj['p1Region'];
-		var p2Region = scObj['p2Region'];*/
+		var p1Region = scObj['p1Region'];
+		var p2Region = scObj['p2Region'];
+		var p1Pronoun = scObj['p1Pronoun'];
+		var p2Pronoun = scObj['p2Pronoun'];
 		var round = scObj['round'];
 		var comm1 = scObj['comm1'];
 		var comm2 = scObj['comm2'];
-		/*var int1 = scObj['int1'];
-		var int2 = scObj['int2'];
-		var int3 = scObj['int3'];
-		var int4 = scObj['int4'];*/
-		var comms = "Commentators: " + comm1 + " & " + comm2;
+		var comm1Pronoun = scObj['comm1Pronoun'];
+		var comm2Pronoun = scObj['comm2Pronoun'];
+		var comms = "Commentators: " + comm1 + " (" + comm1Pronoun + ") & " + comm2 + " (" + comm2Pronoun + ")";
 				
 		if(startup == true){
 			TweenMax.set('#p1Wrapper',{css:{x:p1Move}});
@@ -187,12 +191,14 @@ function init(){
 			$('#p2Team').html(p2Team);
 			$('#p1Score').html(p1Score);
 			$('#p2Score').html(p2Score);
+			$('#p1Pronoun').html(p1Pronoun);
+			$('#p2Pronoun').html(p2Pronoun);
 			$('#round').html(round);
-			$('#comm1').html(comm1);
-			$('#comm2').html(comm2);
+			//$('#comm1').html(comm1);
+			//$('#comm2').html(comm2);
 			$('#comms').html(comms);
-			/*$('#p1Region').attr('src', '../imgs/regions/'+p1Region+".png");
-			$('#p2Region').attr('src', '../imgs/regions/'+p2Region+".png");*/
+			$('#p1Region').attr('src', '../imgs/regions/'+p1Region+".png");
+			$('#p2Region').attr('src', '../imgs/regions/'+p2Region+".png");
 			
 			p1Wrap.each(function(i, p1Wrap){ //function to resize font if text string is too long and causes div to overflow its width/height boundaries
 				while(p1Wrap.scrollWidth > p1Wrap.offsetWidth || p1Wrap.scrollHeight > p1Wrap.offsetHeight){
@@ -224,9 +230,9 @@ function init(){
 			TweenMax.to('#p1Wrapper',nameTime,{css:{x:'+0px', opacity: 1},ease:Quad.easeOut,delay:nameDelay})
 			TweenMax.to('#p2Wrapper',nameTime,{css:{x:'+0px', opacity: 1},ease:Quad.easeOut,delay:nameDelay})
 			TweenMax.to('.scores',scTime,{css:{x:'+0px', opacity: 1},ease:Quad.easeOut,delay:scDelay})
-			TweenMax.to('#comms',nameTime,{css:{y:'-90px', opacity: 1},ease:Quad.easeOut,delay:nameDelay})
+			TweenMax.to('#comms',nameTime,{css:{y:'+0px', opacity: 1},ease:Quad.easeOut,delay:nameDelay})
 			TweenMax.to('#round',rdTime,{css:{y:'+0px', opacity: 1},ease:Quad.easeOut,delay:rdDelay})
-			//TweenMax.to('.regions',rdTime,{css:{y:'+0px', opacity: 1},ease:Quad.easeOut,delay:rdDelay})
+			TweenMax.to('.regions',rdTime,{css:{y:'+0px', opacity: 1},ease:Quad.easeOut,delay:rdDelay})
 		}
 		else{
 			game = scObj['game'];
@@ -243,7 +249,7 @@ function init(){
 							$(p1Wrap).css('font-size', newFontSize);
 						}
 					});
-					
+
 					TweenMax.to('#p1Wrapper',.3,{css:{x: '+0px', opacity: 1},ease:Quad.easeOut,delay:.2}); //fades name wrapper back in while moving to original position
 				}});
 			}
@@ -280,15 +286,7 @@ function init(){
 					TweenMax.to('#round',.3,{css:{opacity: 1},ease:Quad.easeOut,delay:.2});
 				}});
 			}
-			
-			if($('#comm1').text() != comm1){
-				$('#comm1').html(comm1);
-			}
-				
-			if($('#comm2').text() != comm2){
-				$('#comm2').html(comm2);
-			}
-			
+						
 			if($('#comms').text() != comms){
 				TweenMax.to('#comms',.3,{css:{opacity: 0},ease:Quad.easeOut,delay:0,onComplete:function(){
 					$('#comms').html(comms);
@@ -297,7 +295,7 @@ function init(){
 				}});
 			}
 			
-			/*if($('#p1Region').attr('src') != '../imgs/regions/'+p1Region+".png"){ //just fade out, update image, fade back in
+			if($('#p1Region').attr('src') != '../imgs/regions/'+p1Region+".png"){ //just fade out, update image, fade back in
 				TweenMax.to('#p1Region',.3,{css:{opacity: 0},ease:Quad.easeOut,delay:0,onComplete:function(){
 					$('#p1Region').attr('src', '../imgs/regions/'+p1Region+".png");
 					TweenMax.to('#p1Region',.3,{css:{opacity: 1},ease:Quad.easeOut,delay:.2});
@@ -308,7 +306,8 @@ function init(){
 					$('#p2Region').attr('src', '../imgs/regions/'+p2Region+".png");
 					TweenMax.to('#p2Region',.3,{css:{opacity: 1},ease:Quad.easeOut,delay:.2});
 				}});
-			}*/
+			}
+
 			if($('#p1Score').text() != p1Score){ //same as round, no postioning changes just fade out, update text, fade back in
 				TweenMax.to('#p1Score',.3,{css:{opacity: 0},ease:Quad.easeOut,delay:0,onComplete:function(){
 					$('#p1Score').html(p1Score);
