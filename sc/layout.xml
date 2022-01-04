@@ -48,7 +48,7 @@
   <lineEdit id="comm1Pronoun" x="155" y="150" width="60" height="20" dataSet="players.csv" dataField="3" master="comm1"/>
   <lineEdit id="comm2" x="265" y="150" width="95" height="20" dataSet="players.csv" dataField="1"/> 
   <lineEdit id="comm2Pronoun" x="360" y="150" width="60" height="20" dataSet="players.csv" dataField="3" master="comm2" />
-  <button type="swap" x="430" y="150" width="60" height="23" tooltip="Swap commentators" id="swap2" swapSet1="comm1" swapSet2="comm2">Swap</button>
+  <button type="swap" x="430" y="150" width="60" height="23" tooltip="Swap commentators" id="swap2" swapSet1="comm1,comm1Pronoun" swapSet2="comm2,comm2Pronoun">Swap</button>
  </tab>
  <tab name="Top 8 Bracket">
     <!--Stole this line edit layout from MiggL, made some changes for layout on my Streamcontrol-->
