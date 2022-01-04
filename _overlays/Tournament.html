@@ -129,15 +129,11 @@
 			height: 155px;
 		}
 
-		.commsWrapper {
-			position: absolute;
-			top: 960px;
-		}
-
 		.regions {
 			position: absolute;
 			top: 840px;
 			opacity: 0;
+			border: 5px solid #555;
 		}
 
 		#p1Region {
@@ -150,12 +146,15 @@
 		}
 
 		#gameHold {
-			display: none;
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			font-size: 40px;
 		}
 
 		#comms {
 			position: absolute;
-			top: 1140px;
+			top: 1050px;
 			font-size: 20px;
 			opacity: 0;
 		}
@@ -207,29 +206,20 @@
 	<div id="scoreboardBG">
 		<video id="scoreboardVid" class="scoreboard" type="video/webm" width="1920" height="114"></video> <!--Need to get rid of this scoreboardVid stuff, this is an artifact from old code-->
 		<img id="testBG" class="scoreboard" src="../imgs/test.png"></img>
-		<!--<img id="p1Score" src="../imgs/p1Score.png" class="scoreboard"></img>
-		<img id="p1Name" src="../imgs/p1Name.png" class="scoreboard"></img>
-		<img id="p2Score" src="../imgs/p2Score.png" class="scoreboard"></img>
-		<img id="p2Name" src="../imgs/p2Name.png" class="scoreboard"></img>
-		<img id="round" src="../imgs/round.png" class="scoreboard"></img>
-		<img src="../imgs/message.png" class="scoreboard"></img>-->
-
+		<img id="roundPNG" class="scoreboard" src="../imgs/Generic Games/Pools-Generic.png"></img>
+		<img id="p1ScorePNG" class="scoreboard" src="../imgs/Generic Games/P1-Score.png"></img>
+		<img id="p1NamePNG" class="scoreboard" src="../imgs/Generic Games/P1-Generic.png"></img>
+		<img id="p2ScorePNG" class="scoreboard" src="../imgs/Generic Games/P2-Score.png"></img>
+		<img id="p2NamePNG" class="scoreboard" src="../imgs/Generic Games/P2-Generic.png"></img>
 	</div>
 
 	<div id="scoreboard">
-		<div id="elements"><!--Probably best to change the scoreboard div and put the elements in scoreboardBG, leave only the text in the scoreboard div-->
-			<img id="roundPNG" class="elements" src="../imgs/Generic Games/Pools-Generic.png"></img>
-			<img id="p1ScorePNG" class="elements" src="../imgs/Generic Games/P1-Score.png"></img>
-			<img id="p1NamePNG" class="elements" src="../imgs/Generic Games/P1-Generic.png"></img>
-			<img id="p2ScorePNG" class="elements" src="../imgs/Generic Games/P2-Score.png"></img>
-			<img id="p2NamePNG" class="elements" src="../imgs/Generic Games/P2-Generic.png"></img>
-		</div>
 		<div id="leftWrapper">
 			<span id="p1Score" class="scores"></span>
 			<span id="p1Wrapper" class="wrappers">
 				<span id="p1Team" class="teams"></span>
 				<span id="p1Name" class="names"></span>
-
+				<span id="p1Pronoun" class="pronouns"></span>
 			</span>
 		</div>
 		<div id="rightWrapper">
@@ -237,6 +227,7 @@
 			<span id="p2Wrapper" class="wrappers">
 				<span id="p2Team" class="teams"></span>
 				<span id="p2Name" class="names"></span>
+				<span id="p2Pronoun" class="pronouns"></span>
 			</span>
 		</div>
 		<div id="regionWrapper">
