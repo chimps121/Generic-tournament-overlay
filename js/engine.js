@@ -237,12 +237,13 @@ function init(){
 		else{
 			game = scObj['game'];
 			
-			if($('#p1Name').text() != p1Name || $('#p1Team').text() != p1Team){ //if either name or team do not match, fades out wrapper and updates them both
+			if($('#p1Name').text() != p1Name || $('#p1Team').text() != p1Team || $('#p1Pronoun').text() != p1Pronoun){ //if either name or team do not match, fades out wrapper and updates them both
 				TweenMax.to('#p1Wrapper',.3,{css:{x: p1Move, opacity: 0},ease:Quad.easeOut,delay:0,onComplete:function(){ //uses onComplete parameter to execute function after TweenMax
 					$('#p1Wrapper').css('font-size',nameSize); //restores default font size based on variable set in scoreboard.html
 					$('#p1Name').html(p1Name); //updates name and team html objects with current json values
-					$('#p1Team').html(p1Team);					
-			
+					$('#p1Team').html(p1Team);
+					$('#p1Pronoun').html(p1Pronoun);
+					
 					p1Wrap.each(function(i, p1Wrap){//same resize functions from above
 						while(p1Wrap.scrollWidth > p1Wrap.offsetWidth || p1Wrap.scrollHeight > p1Wrap.offsetHeight){
 							var newFontSize = (parseFloat($(p1Wrap).css('font-size').slice(0,-2)) * .95) + 'px';
@@ -254,11 +255,12 @@ function init(){
 				}});
 			}
 			
-			if($('#p2Name').text() != p2Name || $('#p2Team').text() != p2Team){
+			if($('#p2Name').text() != p2Name || $('#p2Team').text() != p2Team || $('#p2Pronoun').text() != p2Pronoun){
 				TweenMax.to('#p2Wrapper',.3,{css:{x: p2Move, opacity: 0},ease:Quad.easeOut,delay:0,onComplete:function(){
 					$('#p2Wrapper').css('font-size',nameSize);
 					$('#p2Name').html(p2Name);
-					$('#p2Team').html(p2Team);					
+					$('#p2Team').html(p2Team);
+					$('#p2Pronoun').html(p2Pronoun);						
 			
 					p2Wrap.each(function(i, p2Wrap){
 						while(p2Wrap.scrollWidth > p2Wrap.offsetWidth || p2Wrap.scrollHeight > p2Wrap.offsetHeight){
